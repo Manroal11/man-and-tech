@@ -7,9 +7,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { ActionLink, Label, SectionHeading } from "@/components/site/ui";
 import { capabilities, projects } from "@/data/site";
 
-const title = "Man & Tech — Digital Product Studio";
+const title = "Man & Tech — Software & AI Product Studio";
 const description =
-  "Man & Tech builds digital products for the real world: websites, applications, SaaS and AI-powered solutions designed to solve meaningful problems.";
+  "Man & Tech builds software, SaaS and AI systems for the real world — starting with MATE, a digital employee for growing businesses.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
