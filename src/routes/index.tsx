@@ -87,9 +87,9 @@ function Index() {
               <Reveal
                 key={p.id}
                 delay={i * 80}
-                className={p.flagship ? "md:col-span-2 lg:col-span-3" : undefined}
+                className={p.flagship ? "md:col-span-2 lg:col-span-3" : ""}
               >
-                <ProjectCard project={p} featured={p.flagship} />
+                <ProjectCard project={p} featured={p.flagship === true} />
               </Reveal>
             ))}
           </div>
