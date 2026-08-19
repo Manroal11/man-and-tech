@@ -19,7 +19,7 @@ export function Hero() {
         <Reveal className="md:col-span-6">
           <Label>Man &amp; Tech · Digital Product Studio</Label>
           <h1 className="mt-6 text-[2.75rem] leading-[1.02] font-semibold text-balance sm:text-6xl lg:text-[4.5rem]">
-            Building software and AI for the real world.
+            Building digital solutions to real world Problems.
           </h1>
           <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             We are a digital product studio building software, SaaS and AI systems — starting with
