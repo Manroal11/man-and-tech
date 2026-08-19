@@ -67,24 +67,29 @@ function Index() {
         </div>
       </section>
 
-      {/* Selected work */}
+      {/* In progress */}
       <section className="border-b border-border">
         <div className="container-mt py-20 md:py-28">
           <Reveal>
             <SectionHeading
-              label="Selected work"
-              title="Things we've built."
+              label="Products & projects"
+              title="What we're building."
+              description="Everything here is in active development or early exploration. No fake case studies — just the work as it stands today."
               action={
                 <ActionLink to="/work" variant="outline" className="h-10 min-h-10 px-4">
-                  View all work <span aria-hidden>→</span>
+                  View everything <span aria-hidden>→</span>
                 </ActionLink>
               }
             />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((p, i) => (
-              <Reveal key={p.id} delay={i * 80}>
-                <ProjectCard project={p} />
+              <Reveal
+                key={p.id}
+                delay={i * 80}
+                className={p.flagship ? "md:col-span-2 lg:col-span-3" : undefined}
+              >
+                <ProjectCard project={p} featured={p.flagship} />
               </Reveal>
             ))}
           </div>
