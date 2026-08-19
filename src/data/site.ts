@@ -50,37 +50,62 @@ export const capabilities: Capability[] = [
   },
 ];
 
+export type ProjectStatus = "Concept" | "Planned" | "In Development" | "Internal Tool";
+
 export type Project = {
   id: string;
   index: string;
   title: string;
+  tagline?: string;
   description: string;
+  status: ProjectStatus;
+  cta: string;
   tags: string[];
-  visual: "agent" | "analytics" | "commerce";
+  visual: "mate" | "agent" | "analytics" | "commerce";
+  flagship?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    id: "ai-customer-agent",
+    id: "mate",
     index: "01",
+    title: "MATE",
+    tagline: "Your Digital Employee.",
+    description:
+      "An AI-powered digital employee that handles routine business work — conversations, follow-ups, documents and daily operations — so teams can focus on what matters.",
+    status: "In Development",
+    cta: "Learn more",
+    tags: ["AI", "SaaS", "Automation"],
+    visual: "mate",
+    flagship: true,
+  },
+  {
+    id: "ai-customer-agent",
+    index: "02",
     title: "AI Customer Agent",
-    description: "AI-powered customer communication platform.",
+    description: "An AI communication layer that answers, qualifies and routes customer messages.",
+    status: "Concept",
+    cta: "Coming soon",
     tags: ["AI", "SaaS"],
     visual: "agent",
   },
   {
     id: "business-intelligence",
-    index: "02",
+    index: "03",
     title: "Business Intelligence",
-    description: "Modern analytics platform designed to help businesses understand their data.",
+    description: "An analytics workspace that turns everyday business data into clear decisions.",
+    status: "Planned",
+    cta: "Coming soon",
     tags: ["Web Application", "Data"],
     visual: "analytics",
   },
   {
     id: "digital-commerce",
-    index: "03",
+    index: "04",
     title: "Digital Commerce",
-    description: "Modern e-commerce experience for growing businesses.",
+    description: "A modern commerce foundation for businesses selling online in growing markets.",
+    status: "Concept",
+    cta: "Coming soon",
     tags: ["Website", "Web Application"],
     visual: "commerce",
   },

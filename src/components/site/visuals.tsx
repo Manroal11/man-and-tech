@@ -81,6 +81,37 @@ export function HeroComposition() {
 }
 
 export function ProjectVisual({ variant }: { variant: Project["visual"] }) {
+  if (variant === "mate") {
+    return (
+      <Frame>
+        <div className="flex h-full flex-col justify-between">
+          <div className="flex items-center justify-between">
+            <span className="font-display text-sm font-semibold tracking-tight">MATE</span>
+            <span className="font-mono text-[9px] tracking-[0.16em] text-accent uppercase">
+              running
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2" aria-hidden>
+            {["128", "1.0k", "36h"].map((v) => (
+              <div key={v} className="rounded-md border border-border bg-surface-elevated p-2">
+                <p className="font-display text-sm font-semibold">{v}</p>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-2" aria-hidden>
+            {[88, 64, 42].map((w, i) => (
+              <div key={w} className="h-1.5 rounded-full bg-surface-elevated">
+                <div
+                  className={i === 0 ? "h-1.5 rounded-full bg-accent" : "h-1.5 rounded-full bg-foreground/35"}
+                  style={{ width: `${w}%` }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </Frame>
+    );
+  }
   if (variant === "agent") {
     return (
       <Frame>

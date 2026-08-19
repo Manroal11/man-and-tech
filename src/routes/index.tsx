@@ -7,9 +7,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { ActionLink, Label, SectionHeading } from "@/components/site/ui";
 import { capabilities, projects } from "@/data/site";
 
-const title = "Man & Tech — Digital Product Studio";
+const title = "Man & Tech — Software & AI Product Studio";
 const description =
-  "Man & Tech builds digital products for the real world: websites, applications, SaaS and AI-powered solutions designed to solve meaningful problems.";
+  "Man & Tech builds software, SaaS and AI systems for the real world — starting with MATE, a digital employee for growing businesses.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,11 +40,12 @@ function Index() {
           </Reveal>
           <Reveal delay={80} className="md:col-span-8">
             <h2 className="text-3xl leading-[1.08] font-semibold text-balance sm:text-4xl lg:text-5xl">
-              Technology should solve problems.
+              Technology should do the work.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Man &amp; Tech is a digital product studio focused on building useful software,
-              exploring emerging technologies and turning ideas into products.
+              Man &amp; Tech is a digital product studio building software, SaaS and AI systems. We
+              are early, we build in the open, and every product starts with a real problem — the
+              first one being MATE.
             </p>
           </Reveal>
         </div>
@@ -66,24 +67,29 @@ function Index() {
         </div>
       </section>
 
-      {/* Selected work */}
+      {/* In progress */}
       <section className="border-b border-border">
         <div className="container-mt py-20 md:py-28">
           <Reveal>
             <SectionHeading
-              label="Selected work"
-              title="Things we've built."
+              label="Products & projects"
+              title="What we're building."
+              description="Everything here is in active development or early exploration. No fake case studies — just the work as it stands today."
               action={
                 <ActionLink to="/work" variant="outline" className="h-10 min-h-10 px-4">
-                  View all work <span aria-hidden>→</span>
+                  View everything <span aria-hidden>→</span>
                 </ActionLink>
               }
             />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((p, i) => (
-              <Reveal key={p.id} delay={i * 80}>
-                <ProjectCard project={p} />
+              <Reveal
+                key={p.id}
+                delay={i * 80}
+                className={p.flagship ? "md:col-span-2 lg:col-span-3" : ""}
+              >
+                <ProjectCard project={p} featured={p.flagship === true} />
               </Reveal>
             ))}
           </div>
