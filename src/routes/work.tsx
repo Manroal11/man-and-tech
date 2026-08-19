@@ -27,13 +27,15 @@ export const Route = createFileRoute("/work")({
 function WorkPage() {
   return (
     <PlaceholderPage
-      label="Selected work"
-      title="Things we've built."
-      description="A closer look at the products we design, engineer and ship. Full case studies are on the way."
+      label="Products & projects"
+      title="What we're building."
+      description="An honest view of our work in progress — each item shows its current stage, from early concept to active development."
     >
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+          <div key={p.id} className={p.flagship ? "md:col-span-2 lg:col-span-3" : undefined}>
+            <ProjectCard project={p} featured={p.flagship === true} />
+          </div>
         ))}
       </div>
     </PlaceholderPage>
