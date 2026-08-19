@@ -40,11 +40,12 @@ function Index() {
           </Reveal>
           <Reveal delay={80} className="md:col-span-8">
             <h2 className="text-3xl leading-[1.08] font-semibold text-balance sm:text-4xl lg:text-5xl">
-              Technology should solve problems.
+              Technology should do the work.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Man &amp; Tech is a digital product studio focused on building useful software,
-              exploring emerging technologies and turning ideas into products.
+              Man &amp; Tech is a digital product studio building software, SaaS and AI systems. We
+              are early, we build in the open, and every product starts with a real problem — the
+              first one being MATE.
             </p>
           </Reveal>
         </div>
