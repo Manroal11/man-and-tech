@@ -46,7 +46,12 @@ export function ActionLink({
 }
 
 export function Label({ children, className }: { children: ReactNode; className?: string }) {
-  return <p className={cn("label-xs", className)}>{children}</p>;
+  return (
+    <p className={cn("label-xs flex items-center gap-2", className)}>
+      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
+      {children}
+    </p>
+  );
 }
 
 export function SectionHeading({

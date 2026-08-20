@@ -40,16 +40,16 @@ function Index() {
           </Reveal>
           <Reveal delay={80} className="md:col-span-8">
             <h2 className="text-3xl leading-[1.08] font-semibold text-balance sm:text-4xl lg:text-5xl">
-              Technology should do the work.
+              Technology should solve problems.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Man &amp; Tech is a digital product studio building software, SaaS and AI systems. We
-              are early, we build in the open, and every product starts with a real problem — the
-              first one being MATE.
+              Man &amp; Tech is a digital product studio focused on turning real-world problems into
+              useful software, intelligent systems and scalable digital products.
             </p>
           </Reveal>
         </div>
       </section>
+
 
       {/* Capabilities */}
       <section className="border-b border-border">
@@ -72,9 +72,10 @@ function Index() {
         <div className="container-mt py-20 md:py-28">
           <Reveal>
             <SectionHeading
-              label="Products & projects"
+              label="Featured"
               title="What we're building."
-              description="Everything here is in active development or early exploration. No fake case studies — just the work as it stands today."
+              description="Ideas, products and experiments we're turning into working technology."
+
               action={
                 <ActionLink to="/work" variant="outline" className="h-10 min-h-10 px-4">
                   View everything <span aria-hidden>→</span>
@@ -122,7 +123,26 @@ function Index() {
         </div>
       </section>
 
+      {/* Vision */}
+      <section className="border-b border-border">
+        <div className="container-mt grid gap-8 py-20 md:grid-cols-12 md:py-28">
+          <Reveal className="md:col-span-4">
+            <Label>The vision</Label>
+          </Reveal>
+          <Reveal delay={80} className="md:col-span-8">
+            <h2 className="text-3xl leading-[1.08] font-semibold text-balance sm:text-4xl lg:text-5xl">
+              From problems to products.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Man &amp; Tech explores real-world problems, builds practical solutions and turns the
+              most promising ideas into digital products.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       <CTA />
+
     </>
   );
 }

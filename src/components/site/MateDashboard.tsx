@@ -1,105 +1,122 @@
+const tabs = ["Overview", "Conversations", "Customers", "Tasks", "Analytics"] as const;
+
 const metrics = [
-  ["Tasks handled", "128"],
-  ["Messages", "1,042"],
-  ["Hours saved", "36"],
-  ["Accuracy", "97%"],
+  ["Active Conversations", "12", "+3"],
+  ["Resolved Today", "28", "+11"],
+  ["Tasks Automated", "47", "+8"],
+  ["Customer Satisfaction", "94%", "+2.1%"],
 ] as const;
 
 const flow = [
-  ["Reads incoming request", "done"],
-  ["Drafts a reply", "done"],
-  ["Updates the record", "active"],
-  ["Schedules follow-up", "queued"],
+  ["Customer enquiry received", "Channel · Email", "active"],
+  ["MATE analyzed intent", "Confidence 0.96", "done"],
+  ["Response generated", "Draft · 1.2s", "done"],
+  ["Conversation resolved", "Auto-closed", "active"],
 ] as const;
 
 const today = [
-  ["Answer 12 customer messages", true],
-  ["Send 4 invoice reminders", true],
-  ["Summarise weekly report", false],
-  ["Prepare Monday follow-ups", false],
+  ["Customer enquiries handled", true],
+  ["Follow-up messages sent", true],
+  ["Frequently asked questions answered", true],
+  ["Escalated conversation", false],
 ] as const;
 
 export function MateDashboard() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-surface shadow-[var(--shadow-card)]">
-      {/* top bar */}
-      <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
-        <div className="flex items-center gap-3">
-          <span className="font-display text-sm font-semibold tracking-tight">MATE</span>
-          <span className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground uppercase">
-            Your Digital Employee.
-          </span>
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface/70 shadow-[var(--shadow-card)] backdrop-blur-sm">
+      {/* browser chrome */}
+      <div className="flex items-center justify-between gap-3 px-4 py-3">
+        <div className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
         </div>
-        <span className="font-mono rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[9px] tracking-[0.16em] text-accent uppercase">
-          In development
+        <span className="font-mono flex items-center gap-2 text-[9px] tracking-[0.18em] text-muted-foreground uppercase">
+          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
+          MATE · In development
         </span>
       </div>
 
-      <div className="space-y-6 p-5 sm:p-6">
+      {/* app nav */}
+      <div className="flex items-center gap-3 overflow-x-auto border-y border-border px-4 py-2.5">
+        <span className="font-display text-sm font-semibold tracking-[0.12em]">MATE</span>
+        {tabs.map((t, i) => (
+          <span
+            key={t}
+            className={
+              i === 0
+                ? "rounded-md bg-foreground/8 px-2.5 py-1 text-xs whitespace-nowrap text-foreground"
+                : "px-2.5 py-1 text-xs whitespace-nowrap text-muted-foreground"
+            }
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <div className="space-y-4 p-4 sm:p-5">
         <div>
-          <p className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground uppercase">
-            Good morning
-          </p>
-          <p className="font-display mt-1 text-xl font-semibold tracking-tight">
-            Here&apos;s what I handled for you.
-          </p>
+          <p className="text-xs text-muted-foreground">Good morning.</p>
+          <p className="mt-0.5 text-sm font-semibold tracking-tight">MATE is working for you.</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-4">
-          {metrics.map(([k, v]) => (
-            <div key={k} className="bg-surface p-4">
-              <p className="font-mono text-[9px] tracking-[0.16em] text-muted-foreground uppercase">
-                {k}
-              </p>
-              <p className="font-display mt-1 text-xl font-semibold">{v}</p>
+        <div className="grid grid-cols-2 gap-3">
+          {metrics.map(([k, v, d]) => (
+            <div key={k} className="rounded-xl border border-border bg-background/40 p-3.5">
+              <p className="text-[10px] text-muted-foreground">{k}</p>
+              <div className="mt-1.5 flex items-end justify-between gap-2">
+                <p className="font-display text-2xl font-semibold tracking-tight">{v}</p>
+                <span className="font-mono text-[9px] text-accent">{d}</span>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="rounded-lg border border-border p-4">
-            <p className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground uppercase">
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="rounded-xl border border-border bg-background/40 p-3.5">
+            <p className="font-mono text-[9px] tracking-[0.18em] text-muted-foreground uppercase">
               AI activity
             </p>
-            <ul className="mt-4 space-y-3">
-              {flow.map(([step, state]) => (
-                <li key={step} className="flex items-center gap-3 text-xs">
+            <ul className="mt-3 space-y-2.5">
+              {flow.map(([step, meta, state]) => (
+                <li key={step} className="flex items-start gap-2.5">
                   <span
                     aria-hidden
                     className={
                       state === "active"
-                        ? "h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                        : state === "done"
-                          ? "h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/45"
-                          : "h-1.5 w-1.5 shrink-0 rounded-full bg-border-strong"
+                        ? "mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                        : "mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/25"
                     }
                   />
-                  <span className={state === "queued" ? "text-muted-foreground" : "text-foreground/85"}>
-                    {step}
+                  <span>
+                    <span className="block text-[11px] text-foreground/90">{step}</span>
+                    <span className="font-mono block text-[9px] text-muted-foreground">{meta}</span>
                   </span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-lg border border-border p-4">
-            <p className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground uppercase">
+          <div className="rounded-xl border border-border bg-background/40 p-3.5">
+            <p className="font-mono text-[9px] tracking-[0.18em] text-muted-foreground uppercase">
               Today&apos;s activity
             </p>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3 space-y-2.5">
               {today.map(([task, done]) => (
-                <li key={task} className="flex items-start gap-3 text-xs">
+                <li key={task} className="flex items-start gap-2.5">
                   <span
                     aria-hidden
                     className={
                       done
-                        ? "mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] bg-accent text-[9px] text-accent-foreground"
-                        : "mt-px h-4 w-4 shrink-0 rounded-[4px] border border-border-strong"
+                        ? "mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent/15 text-[8px] text-accent"
+                        : "mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-border-strong text-[8px] text-muted-foreground"
                     }
                   >
-                    {done ? "✓" : ""}
+                    {done ? "✓" : "○"}
                   </span>
-                  <span className={done ? "text-muted-foreground line-through" : "text-foreground/85"}>
+                  <span
+                    className={done ? "text-[11px] text-foreground/90" : "text-[11px] text-muted-foreground"}
+                  >
                     {task}
                   </span>
                 </li>

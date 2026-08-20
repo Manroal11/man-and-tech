@@ -10,27 +10,23 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{ background: "var(--gradient-hero)" }}
       />
-      <div
-        aria-hidden
-        className="grid-lines pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(75%_60%_at_50%_0%,black,transparent)]"
-      />
 
-      <div className="container-mt relative grid items-center gap-14 pt-20 pb-16 md:grid-cols-12 md:pt-28 md:pb-24">
+      <div className="container-mt relative grid items-center gap-14 pt-20 pb-16 md:grid-cols-12 md:pt-28 md:pb-28">
         <Reveal className="md:col-span-6">
           <Label>Man &amp; Tech · Digital Product Studio</Label>
-          <h1 className="mt-6 text-[2.75rem] leading-[1.02] font-semibold text-balance sm:text-6xl lg:text-[4.5rem]">
-            Building digital solutions to real world Problems.
+          <h1 className="mt-6 text-[2.75rem] leading-[1.02] font-semibold text-balance sm:text-6xl lg:text-[4.25rem]">
+            We build digital solutions for real-world problems.
           </h1>
           <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            We are a digital product studio building software, SaaS and AI systems — starting with
-            MATE, our first product: a digital employee for growing businesses.
+            Software, AI and digital products designed to make work simpler, businesses smarter, and
+            ideas possible.
           </p>
           <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-            <ActionLink to="/products" variant="accent">
-              Discover MATE <span aria-hidden>→</span>
+            <ActionLink to="/work" variant="primary" className="rounded-full">
+              Explore what we&apos;re building <span aria-hidden>→</span>
             </ActionLink>
-            <ActionLink to="/work" variant="outline">
-              See what we&apos;re building
+            <ActionLink to="/contact" variant="ghost" className="rounded-full">
+              Start a project
             </ActionLink>
           </div>
         </Reveal>
