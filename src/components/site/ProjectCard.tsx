@@ -34,8 +34,9 @@ export function ProjectCard({ project, featured }: { project: Project; featured?
           <div className="flex items-start justify-between gap-4 px-1 pt-5">
             <div>
               <p className="font-mono text-[11px] tracking-[0.18em] text-muted-foreground">
-                {project.index}
+                {featured ? "Flagship Project" : project.index}
               </p>
+
               <h3
                 className={cn(
                   "mt-2 text-lg font-semibold tracking-tight",
